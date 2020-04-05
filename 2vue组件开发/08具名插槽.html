@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <App></App>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+
+    Vue.component("MBtn", {
+        template:
+        `
+        <button>
+            <slot name="login"></slot>
+            <slot name="register"></slot>
+            <slot name="submit"></slot>
+</button>
+        `
+    });
+
+    const App = {
+        data() {
+            return {
+
+            }
+        },
+        template:
+            `
+            <div>
+                <MBtn>
+                <template slot="login"><a href="#">登录</a></template>
+</MBtn>
+                <MBtn>
+                <template slot="submit">提交</template>
+</MBtn>
+<MBtn>
+                <template slot="register">注册</template>
+</MBtn>
+            </div>
+        `,
+    };
+
+
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            App,
+        },
+    })
+</script>
+</body>
+</html>

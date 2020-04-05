@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <App></App>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+
+    Vue.component("MBtn", {
+        template:
+        `
+        <button>
+        <slot></slot>
+</button>
+        `
+    });
+
+    const App = {
+        data() {
+            return {
+
+            }
+        },
+        template:
+            `
+            <div>
+                <MBtn><a href="#">登录</a></MBtn>
+                <MBtn>注册</MBtn>
+            </div>
+        `,
+    };
+
+
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            App,
+        },
+    })
+</script>
+</body>
+</html>

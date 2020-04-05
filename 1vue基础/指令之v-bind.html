@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="E:/杂七杂八/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="E:/杂七杂八/font-awesome-4.7.0/css/font-awesome.css">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a v-bind:href='res.url' v-bind:title="res.title">{{res.name}}</a>
+        <img :src="imgsrc" alt="">
+        <h3 v-bind:class="{active:isActive}">v-bind的用法</h3>
+        <h4 :style="{color:iscolor, fontSize:fontsize+'px'}">百度一下</h4>
+    </div>
+    <script src="E:/杂七杂八/jquery-3.3.1.min"></script>
+    <script src="E:/杂七杂八/vue.js"></script>
+    <script src="E:/杂七杂八/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                res: {
+                    name: "百度",
+                    url: "http://www.baidu.com",
+                    title: '百度一下'
+                },
+                imgsrc: 'https://dss0.baidu.com/73t1bjeh1BF3odCf/it/u=239267537,2183846001&fm=85&s=1DA87F7F03206F1F49555DE203003030',
+                isActive: true,
+                iscolor: 'green',
+                fontsize: 30
+            }
+        })
+    </script>
+</body>
+</html>

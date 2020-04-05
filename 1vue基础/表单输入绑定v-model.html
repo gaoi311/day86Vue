@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+{{reversemsg}}
+    <h3>{{fullname}}</h3>
+    <button v-on:click="handleclick">改变</button>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello world',
+            first: '雄安吗',
+            last: '个',
+        },
+        methods: {
+            handleclick(){
+                this.msg = "哈哈哈";
+                this.last = "nin";
+            }
+        },
+        computed:{
+            reversemsg: function () {
+                return this.msg.split("").reverse().join('');
+            },
+            fullname: function () {
+                return this.first + this.last;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
+

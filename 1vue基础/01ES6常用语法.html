@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+
+<script>
+    // var username = "gaoi";
+    // var username = "yjy";
+    //
+    // console.log(username);
+    //
+    //
+    // let username = "hahah";
+    // console.log(username);
+
+    // const PI = 3.14;
+    // console.log(PI);
+    // let user;
+    // let od = document.getElementById("app");
+    // let username1 = 'maweihua';
+    // let username2 = "yzy";
+    // // od.innerText = "<h1>Hello vue" +
+    // //     "<h2>Hello vue</h2>" +
+    // //     "</h1>";
+    // od.innerHTML = `
+    // <h1>hello ${username1}</h1>
+    // <h2>hello ${username2}</h2>
+    // `
+    let ayy = [1, 2, 3];
+    // let [a, b] = ayy;
+
+    let obj = {
+        user: 'lij',
+        age: 23,
+
+    };
+    let {user: username, age} = obj;
+    console.log(username);
+
+    let a = 1;
+    let b = 2;
+
+    [a, b] = [b, a];
+    console.log(a, b);
+
+    // let foo = v => v;
+    let bar = (x , y) => {return x+y};
+    console.log(bar(10, 20));
+
+    function foo() {
+        console.log(this);
+    }
+    foo();
+
+    // function Person() {
+    //     this.username = 'gaoi';
+    //     tis.age = 20;
+    // }
+    // Person.prototype.showInfo = function () {
+    //     console.log(this.username)
+    // };
+
+    class Person{
+        constructor (username, age){
+            this.username = username;
+            this.age = age;
+        }
+        showInfo(){
+            console.log(this.age);
+        }
+    }
+
+    class gaoi extends Person{
+        constructor(username, age, hobby) {
+            super();
+            this.username = username;
+            this.age = age;
+            this.hobby = hobby;
+        }
+    }
+
+    let obj = {
+        name: 'gaoi',
+        foo(){
+            console.log(this.name);
+        }
+    };
+
+    obj.foo();
+
+</script>
+
+</body>
+</html>

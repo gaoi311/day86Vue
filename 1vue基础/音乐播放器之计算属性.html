@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            margin: 20px 20px;
+            padding: 10px 5px;
+            border-radius: 10px;
+        }
+
+        ul li.active {
+            background-color: #d2e2f3;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <audio :src="getcurrentsrc" controls autoplay="autoplay"></audio>
+    <ul>
+        <li :class="{active:index === currentindex}" v-for="(item,index) in musicData" :key="item.id" @click="handleclick(index)">
+            <h2>{{item.id}}-歌名:{{item.name}}</h2>
+            <p>{{item.author}}</p>
+        </li>
+    </ul>
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    const musicData = [
+        {id: 1, name: "赵雷 - 成都", author: "赵雷", song: 'static/赵雷 - 成都.mp3'},
+        {id: 2, name: "林宥嘉 - 全世界谁倾听你", author: "林宥嘉", song: 'static/林宥嘉 - 全世界谁倾听你.flac'},
+        {id: 3, name: "王菲 - 你在终点等我", author: "王菲", song: 'static/王菲 - 你在终点等我.flac'},
+        {id: 4, name: "Kyle Xian - 你的名字", author: "Kyle Xian", song: 'static/Kyle Xian - 《你的名字。》6首BGM其实是一首歌（前前前世 X 梦灯笼 X 火花.mp3'}
+    ];
+
+    new Vue({
+        el: '#app',
+        data: {
+            musicData: musicData,
+            currentindex: 0
+        },
+        methods: {
+            handleclick(index) {
+                this.currentindex = index;
+            },
+        },
+        computed: {
+            getcurrentsrc(){
+                return this.musicData[this.currentindex].song;
+            }
+        }
+    });
+</script>
+</body>
+</html>

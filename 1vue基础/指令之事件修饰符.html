@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="E:/杂七杂八/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="E:/杂七杂八/font-awesome-4.7.0/css/font-awesome.css">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .active{
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{num}}</h3>
+        <button v-on:click.once="handleclick">+1</button>
+        <div class="box" :class="{active:isactive}"></div>
+        <button v-on:click="change">切换</button>
+        <input v-on:keyup.up="submit">
+    </div>
+    <script src="E:/杂七杂八/jquery-3.3.1.min"></script>
+    <script src="E:/杂七杂八/vue.js"></script>
+    <script src="E:/杂七杂八/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script>
+        
+        new Vue({
+            el: '#app',
+            data: {
+                isactive: false,
+                num: 0
+            },
+            methods: {
+                handleclick: function () {
+                    this.num += 1;
+                },
+                change: function(){
+                    this.isactive = !this.isactive;
+                },
+                submit(){
+                    alert(1);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

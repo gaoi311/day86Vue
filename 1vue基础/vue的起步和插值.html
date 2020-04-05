@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="E:/杂七杂八/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="E:/杂七杂八/font-awesome-4.7.0/css/font-awesome.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ msg }}</h2>
+        <h3>{{ 2 }}</h3>
+        <h3>{{ "hello" }}</h3>
+        <h3>{{ {id:1} }}</h3>
+        <h3>{{ 1>2?'真的':'假的' }}</h3>
+        <h3>{{ txt.split('').reverse().join('') }}</h3>
+        <h3>{{ getContent() }}</h3>
+    </div>
+
+    <script src="E:/杂七杂八/jquery-3.3.1.min"></script>
+    <script src="E:/杂七杂八/vue.js"></script>
+    <script src="E:/杂七杂八/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                txt: 'hello',
+                msg2: 'content',
+                msg3: '<p>插值语法</p>'
+            },
+            methods: {
+                getContent(){
+                    return this.msg + " " + this.msg2;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

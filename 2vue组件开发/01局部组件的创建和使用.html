@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <App></App>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+    const App = {
+        data(){
+            return {
+                msg: "我是AAApp组件"
+            }
+        },
+        template: `
+            <div>
+                <h3>{{ msg }}</h3>
+                <button @click="handleclick">按钮</button>
+            </div>
+        `,
+        methods:{
+            handleclick(){
+                this.msg = "点击事件"
+            }
+        },
+        computed:{
+
+        }
+    };
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            App,
+        },
+    })
+</script>
+</body>
+</html>

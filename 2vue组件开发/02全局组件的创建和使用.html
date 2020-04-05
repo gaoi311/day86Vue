@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <App></App>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+
+    Vue.component("Vheader", {
+       template:`
+       <div>
+       我是导航组件
+</div>
+       `
+    });
+
+    Vue.component("Vaside", {
+       template:
+       `
+            <div>
+            我是导航组件
+            </div>
+       `
+    });
+
+    const Vbtn = {
+        template:
+        `<button>按钮</button>`
+    };
+    const Vcontent = {
+        data() {
+            return {
+
+            };
+        },
+        components:{
+            Vbtn
+        },
+        template:
+        `<div>
+content
+<Vbtn></Vbtn>
+<Vbtn></Vbtn>
+<Vbtn></Vbtn>
+</div>`
+    };
+
+    const App = {
+        data(){
+            return {
+                msg: "我是AAApp组件"
+            }
+        },
+        components:{
+            Vcontent
+        },
+        template: `
+            <div>
+                <Vheader></Vheader>
+                <div>
+                <Vaside></Vaside>
+                <Vcontent></Vcontent>
+</div>
+            </div>
+        `,
+        methods:{
+            handleclick(){
+                this.msg = "点击事件"
+            }
+        },
+        computed:{
+
+        }
+    };
+
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            App,
+            Vcontent,
+            // Vbtn
+        },
+    })
+</script>
+</body>
+</html>

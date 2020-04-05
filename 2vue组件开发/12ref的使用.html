@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <App></App>
+    </div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="vue.js"></script>
+    <script>
+
+        Vue.component('Test', {
+            data(){
+                return {
+                    msg: "小马哥"
+                }
+            },
+            methods: {
+                handleclick(){
+                    this.msg = 'alex';
+                }
+            },
+            template:
+            `
+            <div>
+            <button @click='handleclick'>改变</button>
+            <h3>{{msg}}</h3>
+            </div>
+            `,
+            beforeCreate() {
+                console.log("组件创建之前", this.$data);
+            },
+            created() {
+                console.log("组件创建完成", this.$data);
+            },
+            beforeMount() {
+                console.log("DOM挂载之前", document.getElementById('app'));
+            },
+            mounted () {
+                console.log("DOM挂载完成", document.getElementById('app'));
+            },
+            beforeUpdate() {
+                console.log("DOM更新之前", document.getElementById('app').innerText);
+            },
+            updated() {
+                console.log("DOM更新完成", document.getElementById('app').innerText);
+            },
+            beforeDestroy() {
+                console.log("销毁之前");
+            },
+            destroyed() {
+                console.log("销毁完成");
+            },
+            deactivated() {
+                console.log("失活");
+            },
+            activated() {
+                console.log("激活");
+            },
+        })
+
+        const App = {
+            data(){
+                return {
+                    isShow: true
+                }
+            },
+            components:{
+
+            },
+            methods:{
+                clickhandle(){
+                    this.isShow = !this.isShow;                
+                }
+            },
+            mounted(){
+                console.log(this.$refs.btn);
+                this.$refs.input.focus();
+                console.log(this.$refs.test);
+            },
+            template:
+            `
+            <div>
+                <keep-alive>
+                    <Test ref='test' v-if='isShow'></Test>
+                </keep-alive>
+                <input type="text" ref='input'/>
+                <button ref='btn'>该百年生死</button>
+            </div>
+            `,
+        }
+
+        new Vue({
+            el: '#app',
+            data(){
+                return {}
+            },
+            components:{
+                App
+            },
+            template:
+            ``
+        })
+
+    </script>
+</body>
+</html>

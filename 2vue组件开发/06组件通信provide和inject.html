@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <App></App>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+    const bus = new Vue();
+
+    Vue.component('A', {
+        data(){
+            return {
+                count: 0
+            }
+        },
+        template:
+        `
+            <div>{{msg}}</div>
+        `,
+        inject: ['msg'],
+    });
+
+
+    Vue.component('B', {
+        data(){
+            return {
+
+            }
+        },
+        template:
+        `
+            <div><button @click="handleclick">按钮</button></div>
+        `,
+        methods: {
+            handleclick(){
+                bus.$emit('add', 1)
+            }
+        }
+    });
+
+
+    const App = {
+        data() {
+            return {
+
+            }
+        },
+        provide(){
+            return {
+                msg: "老爹的数据"
+            }
+        },
+        components: {},
+        template:
+            `
+            <div>
+                <A></A>
+                <B></B>
+            </div>
+        `,
+        methods: {
+
+        },
+        computed: {}
+    };
+
+
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            App,
+        },
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <App></App>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="vue.js"></script>
+<script>
+
+    Vue.component('Child', {
+        template:
+        `
+            <div>
+            <h3>我是一个子组件</h3>
+            <h4>{{ childData }}</h4>
+</div>
+        `,
+        props:[
+            'childData'
+        ]
+    });
+
+
+    const App = {
+        data(){
+            return {
+                msg: "我是父组件传进来的值"
+            }
+        },
+        components:{
+
+        },
+        template: `
+            <div>
+<Child :childData = 'msg'></Child>
+            </div>
+        `,
+        methods:{
+            handleclick(){
+                this.msg = "点击事件"
+            }
+        },
+        computed:{
+
+        }
+    };
+
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            App,
+            // Vbtn
+        },
+    })
+</script>
+</body>
+</html>

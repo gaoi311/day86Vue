@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document
+    </title>
+</head>
+<body>
+    <div id="app">
+    
+    </div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="vue.js"></script>
+    <script>
+        const toggleshow = {
+            data(){
+                return {
+                    isShow: false
+                }
+            },
+            methods: {
+                toggleshow(){
+                    this.isShow = !this.isShow;
+                }
+            }
+        }
+
+        const Modal = {
+            template: `
+            <div v-if='isShow'><h3>模态框组件</h3></div>
+
+            `,
+            mixins: [toggleshow]
+        }
+
+        const ToolTip = {
+            template: `
+            <div v-if='isShow'><h3>提示框组件</h3></div>
+
+            `,
+            mixins: [toggleshow]
+        } 
+
+        new Vue({
+            el: '#app',
+            data: {
+    
+            },
+            comments:{
+                Modal,
+                ToolTip
+            },
+            template:`
+            <div>
+                <button @click='handleModal'>模态框</button>            
+                <button @click='handleToolTip'>提示框</button>
+                <Modal ref='modal'></Modal>
+                <ToolTip ref='toolTip'></ToolTip>
+            </div>
+            `,
+            methods:{
+                handleModal(){
+                    this.$refs.modal.toggleshow();
+                },
+                handleToolTip(){
+                    this.$refs.toolTip.toggleshow();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
